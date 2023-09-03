@@ -41,7 +41,6 @@ const Home = () => {
             ))}
           </div>
         )}
-
       </div>
       {/* Modal */}
       { modal && <PersonajeModal/>}
