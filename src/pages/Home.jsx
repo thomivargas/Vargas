@@ -35,7 +35,7 @@ const Home = () => {
 
         {/* Personajes */}
         { loading ? <Spinner/> : (
-          <div className='w-full flex justify-center flex-wrap my-12'>
+          <div className='w-full flex justify-center gap-12 md:gap-0 flex-wrap my-12'>
             { personajes.map(personaje => (
               <CardPersonajes personaje={personaje} key={personaje.id} />
             ))}

@@ -8,11 +8,11 @@ const Paginacion = () => {
   return (
     <div className='flex justify-center items-center gap-5'>
         <button className={`p-2 text-sky-600 hover:text-sky-300`} onClick={() => setPage(page - 1)} disabled={page === 1}>
-            Prev
+            Atras
         </button>
         <span>{page}</span>
         <button className='p-2 text-sky-600 hover:text-sky-300' onClick={() => setPage(page + 1)} disabled={page === pageTotal}>
-            Next
+            Siguiente
         </button>
     </div>
   )

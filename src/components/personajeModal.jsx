@@ -23,7 +23,7 @@ const PersonajeModal = () => {
 
   return (
     <div className='fixed inset-0 flex items-center justify-center z-50'>
-        <div className='absolute inset-0 bg-black opacity-60'></div>
+        <div className='absolute inset-0 bg-black opacity-75'></div>
           <div className="bg-gray-800 rounded-3xl overflow-hidden shadow-lg relative">
             <span className="absolute top-1 right-4 text-3xl font-bold text-black md:text-white cursor-pointer" onClick={handleMostarModal}>X</span>
             <div className="flex overflow-hidden">
