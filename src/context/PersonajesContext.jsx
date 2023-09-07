@@ -45,56 +45,52 @@ const PersonajesProvider = ({children}) => {
     const [ loadingModal, setLoadingModal ] = useState(false)
 
     useEffect(() => {
-        const fetchData = async () => {
-          try {
-              setLoading(true)
-              const data = await GetPersonajes(page, namePersonaje);
-              setPersonajes(data.results)
-              setPageTotal(data.info.pages)
-          } catch (error) {
-              console.log(error)
-          }
-          setTimeout(() => {
-              setLoading(false)
-          }, 500)
-        }
-        fetchData()
-    }, [page, namePersonaje])
+        fetchPersonajes()
+        fetchEpisodios()
+        fetchPersonaje()
+    }, [variosPersonajes, page, namePersonaje, pageEpisodios])
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setLoading(true)
-                const data = await GetEpisodios(pageEpisodios)
-                setEpisodios(data.results)
-                setPageTotalEpisodios(data.info.pages)
-            } catch (error) {
-                console.log(error)
-            }
-            setTimeout(() => {
-                setLoading(false)
-            }, 500)
+    const fetchPersonajes = async () => {
+        try {
+            setLoading(true)
+            const data = await GetPersonajes(page, namePersonaje);
+            setPersonajes(data.results)
+            setPageTotal(data.info.pages)
+        } catch (error) {
+            console.log(error)
         }
-        fetchData()
-    }, [pageEpisodios])
+        setTimeout(() => {
+            setLoading(false)
+        }, 500)
+    }
+    const fetchEpisodios = async () => {
+        try {
+            setLoading(true)
+            const data = await GetEpisodios(pageEpisodios)
+            setEpisodios(data.results)
+            setPageTotalEpisodios(data.info.pages)
+        } catch (error) {
+            console.log(error)
+        }
+        setTimeout(() => {
+            setLoading(false)
+        }, 500)
+    }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setLoadingModal(true)
-                if( variosPersonajes.length > 1 ){
-                    const data = await GetPersonaje(variosPersonajes)
-                    setPersonajesEpisodios(data)
-                }
-            } catch (error) {
-                console.log(error)
+    const fetchPersonaje = async () => {
+        try {
+            setLoadingModal(true)
+            if( variosPersonajes.length > 1 ){
+                const data = await GetPersonaje(variosPersonajes)
+                setPersonajesEpisodios(data)
             }
-            setTimeout(() => {
-                setLoadingModal(false)
-            }, 500)
+        } catch (error) {
+            console.log(error)
         }
-        fetchData()
-    }, [variosPersonajes])
+        setTimeout(() => {
+            setLoadingModal(false)
+        }, 500)
+    }
 
     const handleMostarModal = (personaje) => {
         setModal(!modal)
@@ -132,5 +128,4 @@ const PersonajesProvider = ({children}) => {
         </PersonajesContext.Provider>
     )
 }
-
 export default PersonajesProvider

@@ -14,7 +14,6 @@ const Home = () => {
       <div className='w-full text-xl'>
         {/* Navegacion */}
         <NavBar/>
-        
         <div className='flex flex-col md:flex-row items-center md:justify-around md:gap-96 my-12'>
           {/* Buscardor */}
           <input 
